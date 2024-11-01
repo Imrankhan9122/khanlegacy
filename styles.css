@@ -1,0 +1,224 @@
+/* Universal box-sizing reset */
+* {
+    box-sizing: border-box;
+}
+
+/* Body and base styles */
+body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center-aligns navigation items */
+    align-items: center;
+    gap: 15px; /* Adds spacing between items */
+}
+
+nav ul li {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+}
+
+/* Logo styling */
+.logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    height: 100px; /* Adjusted for better responsiveness */
+    border-radius: 50px;
+    border: 5px solid white;
+    margin: 10px;
+
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 1.8rem;
+    pointer-events: none;
+    font-size: 40px;
+}
+
+/* Product grid for responsive layout */
+#products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.product {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: calc(50% - 20px);
+    max-width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product h3 {
+    margin: 10px 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.product p {
+    color: #777;
+}
+
+.product button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.product button:hover {
+    background-color: #218838;
+}
+
+/* Footer styling */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* Background image section */
+.index-background {
+    background-image: url('image.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.quote {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    max-width: 800px;
+    line-height: 1.5;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 25px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .product {
+        width: 100%;
+    }
+
+    .index-background {
+        height: 70vh;
+    }
+
+    .quote {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 80px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .product {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .index-background {
+        height: 50vh;
+    }
+
+    .quote {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}

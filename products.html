@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Products</title>
+</head>
+<body>
+    <header>
+        <h1>KHAN LEGACY</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Products</h2>
+        <div id="products">
+            <div class="product">
+                <h3>Product 1</h3>
+                <p>Price: $29.99</p>
+                <input type="number" min="1" value="1" id="quantity1" />
+                <button onclick="addToCart('Product 1', 29.99, document.getElementById('quantity1').value)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Product 2</h3>
+                <p>Price: $39.99</p>
+                <input type="number" min="1" value="1" id="quantity2" />
+                <button onclick="addToCart('Product 2', 39.99, document.getElementById('quantity2').value)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h3>Product 3</h3>
+                <p>Price: $49.99</p>
+                <input type="number" min="1" value="1" id="quantity3" />
+                <button onclick="addToCart('Product 3', 49.99, document.getElementById('quantity3').value)">Add to Cart</button>
+            </div>
+            <!-- Add more products similarly -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Store</p>
+    </footer>
+    <script>
+        function addToCart(name, price, quantity) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.name === name);
+
+            if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity += parseInt(quantity);
+            } else {
+                cart.push({ name, price, quantity: parseInt(quantity) });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+                    }
+    </script>
+</body>
+</html>

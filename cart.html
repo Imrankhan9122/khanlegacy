@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <header>
+        <h1>KHAN LEGACY</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total"></div>
+        <button id="checkout-button">Checkout</button>
+        <button id="clear-cart-button">Clear Cart</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Store</p>
+    </footer>
+    <script>
+        function displayCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContainer = document.getElementById("cart-items");
+            const totalContainer = document.getElementById("total");
+            cartContainer.innerHTML = ''; // Clear existing content
+            let total = 0;
+
+            cartItems.forEach((item, index) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "cart-item";
+                itemDiv.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price.toFixed(2)}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartContainer.appendChild(itemDiv);
+                total += item.price * item.quantity;
+            });
+
+            totalContainer.innerHTML = `<h3>Total: $${total.toFixed(2)}</h3>`;
+        }
+
+        function removeFromCart(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove the item at the specified index
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart(); // Refresh the cart display
+                    }
+
+        function clearCart() {
+            localStorage.removeItem('cart'); // Clear cart from local storage
+            displayCart(); // Refresh the cart display
+            
+        }
+
+        document.getElementById('clear-cart-button').addEventListener('click', clearCart);
+
+        window.onload = displayCart;
+    </script>
+</body>
+</html>
